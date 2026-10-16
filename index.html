@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="th">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>พบเจอ | ศูนย์ประกาศของหาย วิทยาลัย</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#home" aria-label="หน้าหลัก พบเจอ">
+        <span class="brand-mark">⌕</span>
+        <span>พบ<span>เจอ</span></span>
+      </a>
+      <nav aria-label="เมนูหลัก">
+        <a class="active" href="#home">หน้าหลัก</a>
+        <a href="#announcements">ประกาศทั้งหมด</a>
+        <a href="#how-it-works">วิธีใช้งาน</a>
+      </nav>
+      <div class="header-actions">
+        <button class="login-button" id="loginBtn">เข้าสู่ระบบ</button>
+        <button class="primary-button compact" id="openPostBtn"><span>＋</span> ลงประกาศ</button>
+      </div>
+    </header>
+
+    <main id="home">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">LOST &amp; FOUND CENTER</p>
+          <h1>ของหายไม่ต้องกังวล<br /><em>ช่วยกันตามหา</em>ให้เจอ</h1>
+          <p class="hero-description">ศูนย์กลางประกาศของหายและของที่พบเจอ<br />สำหรับนักเรียนและบุคลากรในวิทยาลัย</p>
+          <div class="hero-actions">
+            <button class="primary-button" data-post-type="lost">ฉันทำของหาย <span>→</span></button>
+            <button class="secondary-button" data-post-type="found">ฉันเก็บของได้</button>
+          </div>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="orb orb-one"></div><div class="orb orb-two"></div>
+          <div class="lost-tag">LOST<span>?</span></div>
+          <div class="phone-card">
+            <div class="phone-top"><span>พบเจอ</span><i></i></div>
+            <div class="mini-search">⌕ &nbsp; ค้นหาของหาย...</div>
+            <div class="mini-item"><span class="icon-box blue">▣</span><div><b>บัตรนักเรียน</b><small>อาคาร 3 ชั้น 2</small></div></div>
+            <div class="mini-item"><span class="icon-box orange">⌁</span><div><b>กุญแจรถยนต์</b><small>ลานจอดรถ</small></div></div>
+            <div class="mini-item"><span class="icon-box purple">♧</span><div><b>กระเป๋าผ้า</b><small>โรงอาหาร</small></div></div>
+          </div>
+          <div class="found-tag">✓ FOUND</div>
+        </div>
+      </section>
+
+      <section class="quick-stats" aria-label="สถิติประกาศ">
+        <article><span class="stat-icon blue">⌕</span><strong id="lostCount">0</strong><small>ประกาศของหาย</small></article>
+        <article><span class="stat-icon yellow">⌁</span><strong id="foundCount">0</strong><small>ประกาศของที่พบ</small></article>
+        <article><span class="stat-icon green">✓</span><strong id="returnedCount">0</strong><small>ส่งคืนเจ้าของแล้ว</small></article>
+      </section>
+
+      <section class="announcements" id="announcements">
+        <div class="section-heading">
+          <div><p class="eyebrow">อัปเดตล่าสุด</p><h2>ประกาศล่าสุด</h2></div>
+          <a href="#all-posts" id="viewAll">ดูทั้งหมด <span>→</span></a>
+        </div>
+        <div class="filter-panel" id="all-posts">
+          <div class="search-wrap"><span>⌕</span><input id="searchInput" type="search" placeholder="ค้นหาชื่อสิ่งของ, สถานที่..." /></div>
+          <select id="categoryFilter" aria-label="เลือกหมวดหมู่"><option value="all">ทุกหมวดหมู่</option><option>บัตรนักเรียน</option><option>กุญแจ</option><option>อุปกรณ์ไอที</option><option>กระเป๋า</option><option>อื่น ๆ</option></select>
+          <select id="statusFilter" aria-label="เลือกสถานะ"><option value="active">กำลังตามหา / รอรับคืน</option><option value="all">ทุกสถานะ</option><option value="returned">ส่งคืนแล้ว</option></select>
+        </div>
+        <div class="post-grid" id="postGrid"></div>
+        <p class="empty-state" id="emptyState" hidden>ไม่พบประกาศที่ตรงกับการค้นหา ลองเปลี่ยนคำค้นหรือเงื่อนไขอีกครั้ง</p>
+      </section>
+
+      <section class="how-it-works" id="how-it-works">
+        <div class="section-heading centered"><div><p class="eyebrow">ใช้งานง่ายใน 3 ขั้นตอน</p><h2>ช่วยกันให้ของกลับถึงเจ้าของ</h2></div></div>
+        <div class="steps">
+          <article><span>01</span><div class="step-icon">✎</div><h3>ลงประกาศ</h3><p>กรอกรายละเอียดของหายหรือของที่เก็บได้ พร้อมรูปภาพถ้ามี</p></article>
+          <article><span>02</span><div class="step-icon">⌕</div><h3>ค้นหาและติดต่อ</h3><p>ค้นหาประกาศที่เกี่ยวข้อง แล้วติดต่อผู้ลงประกาศอย่างปลอดภัย</p></article>
+          <article><span>03</span><div class="step-icon">♡</div><h3>รับคืนและยืนยัน</h3><p>รับของคืนแล้วอัปเดตสถานะ เพื่อปิดประกาศและส่งต่อความช่วยเหลือ</p></article>
+        </div>
+      </section>
+    </main>
+
+    <footer><a class="brand" href="#home"><span class="brand-mark">⌕</span><span>พบ<span>เจอ</span></span></a><p>ศูนย์ประกาศของหายและของที่พบเจอ วิทยาลัย</p><small>© 2026 Lost &amp; Found Center</small></footer>
+
+    <dialog id="loginModal" class="modal small-modal">
+      <button class="close" data-close="loginModal" aria-label="ปิด">×</button><p class="eyebrow">ยินดีต้อนรับ</p><h2>เข้าสู่ระบบ</h2><p>ใช้รหัสนักศึกษาหรือชื่อผู้ใช้งานเพื่อยืนยันตัวตนของคุณ</p>
+      <form id="loginForm"><label>รหัสนักศึกษา / ชื่อผู้ใช้งาน<input required id="username" placeholder="เช่น 66309010001" /></label><label>รหัสผ่าน<input required type="password" placeholder="••••••••" /></label><button class="primary-button full" type="submit">เข้าสู่ระบบ</button></form>
+    </dialog>
+
+    <dialog id="postModal" class="modal">
+      <button class="close" data-close="postModal" aria-label="ปิด">×</button><p class="eyebrow">สร้างประกาศใหม่</p><h2>แจ้งข้อมูลของหาย / ของที่พบ</h2>
+      <form id="postForm">
+        <div class="type-switch"><label><input type="radio" name="postType" value="lost" checked /> <span>ฉันทำของหาย</span></label><label><input type="radio" name="postType" value="found" /> <span>ฉันเก็บของได้</span></label></div>
+        <div class="form-grid"><label>ชื่อสิ่งของ<input required name="title" placeholder="เช่น กระเป๋าสตางค์สีดำ" /></label><label>หมวดหมู่<select required name="category"><option value="">เลือกหมวดหมู่</option><option>บัตรนักเรียน</option><option>กุญแจ</option><option>อุปกรณ์ไอที</option><option>กระเป๋า</option><option>อื่น ๆ</option></select></label><label>สถานที่<input required name="location" placeholder="เช่น อาคาร 2 ชั้น 1" /></label><label>วันที่<input required name="date" type="date" /></label></div>
+        <label>รายละเอียดเพิ่มเติม<textarea name="details" rows="3" placeholder="สี ลักษณะเด่น หรือข้อมูลสำหรับยืนยันความเป็นเจ้าของ"></textarea></label>
+        <label>รูปภาพประกอบ (ถ้ามี)<input name="image" type="file" accept="image/*" /></label>
+        <button class="primary-button full" type="submit">เผยแพร่ประกาศ <span>→</span></button>
+      </form>
+    </dialog>
+    <div class="toast" id="toast" role="status"></div>
+    <script src="app.js"></script>
+  </body>
+</html>
